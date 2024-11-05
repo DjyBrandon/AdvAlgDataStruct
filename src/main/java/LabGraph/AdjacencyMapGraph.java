@@ -1,7 +1,7 @@
-package Test;
+package LabGraph;
 
-import java.util.HashSet;
-import java.util.Set;
+import LabMapHashtables.Map;
+import LabSortedMapBST.Position;
 
 /**
  * An implementation for a graph structure using an adjacency map for each vertex.
@@ -357,39 +357,6 @@ public class AdjacencyMapGraph<V, E> implements Graph<V, E> {
         return sb.toString();
     }
 
-    public static <V, E> void DFS(Graph<V, E> g, Vertex<V> u, Set<Vertex<V>> known, Map<Vertex<V>, Edge<E>> forest) {
-        known.add(u);
-        for (Edge<E> e : g.outgoingEdges(u)) {
-            Vertex<V> v = g.opposite(u, e);
-            if (!known.contains(v)) {
-                forest.put(v, e);
-                DFS(g, v, known, forest);
-            }
-        }
-    }
-
-    public static <V,E> PositionalList<Edge<E>> constructPath(Graph<V,E> g, Vertex<V> u, Vertex<V> v, Map<Vertex<V>,Edge<E>> forest) {
-        PositionalList<Edge<E>> path = new LinkedPositionalList<>();
-        if (forest.get(v) != null) {
-            Vertex<V> walk = v;
-            while (walk != u) {
-                Edge<E> edge = forest.get(walk);
-                path.addFirst(edge);
-                walk = g.opposite(walk, edge);
-            }
-        }
-        return path;
-    }
-
-    public static <V, E> Map<Vertex<V>, Edge<E>> DFSComplete(Graph<V, E> g) {
-        Set<Vertex<V>> known = new HashSet<>();
-        Map<Vertex<V>, Edge<E>> forest = new ProbeHashMap<>();
-        for (Vertex<V> u : g.vertices())
-            if (!known.contains(u))
-                DFS(g, u, known, forest);
-        return forest;
-    }
-
     public static void main(String[] args) {
         // 创建一个有向图
         AdjacencyMapGraph<String, Integer> graph = new AdjacencyMapGraph<>(true);
@@ -432,7 +399,7 @@ public class AdjacencyMapGraph<V, E> implements Graph<V, E> {
         System.out.println(graph);
 
         // 执行 DFS 完整遍历
-        Map<Vertex<String>, Edge<Integer>> dfsForest = AdjacencyMapGraph.DFSComplete(graph);
+        Map<Vertex<String>, Edge<Integer>> dfsForest = GraphAlgorithms.DFSComplete(graph);
 
         // 输出 DFS 结果
         System.out.println("DFS Forest:");
@@ -441,7 +408,7 @@ public class AdjacencyMapGraph<V, E> implements Graph<V, E> {
         }
 
         // 构建路径，假设我们要找从 Beijing 到 Zhengzhou 的路径
-        PositionalList<Edge<Integer>> path = AdjacencyMapGraph.constructPath(graph, v0, v7, dfsForest);
+        PositionalList<Edge<Integer>> path = GraphAlgorithms.constructPath(graph, v0, v7, dfsForest);
 
         // 输出路径
         System.out.println("Path from Beijing to Zhengzhou:");
@@ -450,5 +417,4 @@ public class AdjacencyMapGraph<V, E> implements Graph<V, E> {
             System.out.println(endpoints[0].getElement() + " -> " + endpoints[1].getElement() + " with distance " + e.getElement());
         }
     }
-
 }
