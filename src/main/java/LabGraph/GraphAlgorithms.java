@@ -175,8 +175,7 @@ public class GraphAlgorithms {
      * <p>
      * The edge's element is assumed to be its integral weight.
      */
-    public static <V> Map<Vertex<V>, Integer>
-    shortestPathLengths(Graph<V, Integer> g, Vertex<V> src) {
+    public static <V> Map<Vertex<V>, Integer> shortestPathLengths(Graph<V, Integer> g, Vertex<V> src) {
         // d.get(v) is upper bound on distance from src to v
         Map<Vertex<V>, Integer> d = new ProbeHashMap<>();
         // map reachable v to its d value
@@ -290,12 +289,12 @@ public class GraphAlgorithms {
 
         // 添加边
         graph.insertEdge(v0, v1, 1);
-        graph.insertEdge(v0, v3, 1);
-        graph.insertEdge(v1, v2, 1);
-        graph.insertEdge(v2, v4, 1);
-        graph.insertEdge(v3, v1, 1);
+        graph.insertEdge(v0, v3, 4);
+        graph.insertEdge(v1, v2, 2);
+        graph.insertEdge(v2, v4, 3);
+        graph.insertEdge(v3, v1, 5);
         graph.insertEdge(v3, v4, 1);
-        graph.insertEdge(v4, v1, 1);
+        graph.insertEdge(v4, v1, 7);
         graph.insertEdge(v4, v5, 1);
 
         // 输出图的基本信息
@@ -322,7 +321,6 @@ public class GraphAlgorithms {
             System.out.println(endpoints[0].getElement() + " -> " + endpoints[1].getElement() + " with distance " + e.getElement());
         }
 
-
         // 执行 DFS 完整遍历
         Map<Vertex<String>, Edge<Integer>> dfsForest = DFSComplete(graph);
 
@@ -340,6 +338,72 @@ public class GraphAlgorithms {
         for (Edge<Integer> e : dfsPath) {
             Vertex<String>[] endpoints = graph.endVertices(e);
             System.out.println(endpoints[0].getElement() + " -> " + endpoints[1].getElement() + " with distance " + e.getElement());
+        }
+
+        // 调用 Dijkstra 算法从顶点 A 计算到其他所有可达顶点的最短路径长度
+        Map<Vertex<String>, Integer> shortestPaths = shortestPathLengths(graph, v0);
+
+        // 输出最短路径长度
+        System.out.println("Shortest path lengths from A:");
+        for (Vertex<String> v : shortestPaths.keySet()) {
+            System.out.println("A to " + v.getElement() + ": " + shortestPaths.get(v));
+        }
+
+        // 构建从 A 出发的最短路径树
+        Map<Vertex<String>, Edge<Integer>> spTree = spTree(graph, v0, shortestPaths);
+
+        // 输出最短路径树
+        System.out.println("Shortest path tree:");
+        for (Vertex<String> v : spTree.keySet()) {
+            System.out.println(v.getElement() + " via edge with weight " + spTree.get(v).getElement());
+        }
+
+        // 使用 Kruskal 算法计算最小生成树，并输出其中的边和权重。
+        PositionalList<Edge<Integer>> mst = MST(graph);
+        System.out.println("Minimum spanning tree:");
+        for (Edge<Integer> e : mst) {
+            Vertex<String>[] endpoints = graph.endVertices(e);
+            System.out.println(endpoints[0].getElement() + " - " + endpoints[1].getElement() + " with weight " + e.getElement());
+        }
+
+        // 调用 transitiveClosure 方法
+        transitiveClosure(graph);
+
+        // 输出传递闭包后的图
+        System.out.println("Graph after transitive closure:");
+        System.out.println("Number of vertices: " + graph.numVertices());
+        System.out.println("Number of edges: " + graph.numEdges());
+        for (Vertex<String> u : graph.vertices()) {
+            for (Edge<Integer> e : graph.outgoingEdges(u)) {
+                Vertex<String>[] endpoints = graph.endVertices(e);
+                System.out.println(endpoints[0].getElement() + " -> " + endpoints[1].getElement());
+            }
+        }
+
+        // 创建另一个有向无环图（DAG）用于拓扑排序
+        AdjacencyMapGraph<String, Integer> dag = new AdjacencyMapGraph<>(true);
+
+        // 添加顶点
+        Vertex<String> va = dag.insertVertex("A");
+        Vertex<String> vb = dag.insertVertex("B");
+        Vertex<String> vc = dag.insertVertex("C");
+        Vertex<String> vd = dag.insertVertex("D");
+        Vertex<String> ve = dag.insertVertex("E");
+
+        // 添加边（构成DAG）
+        dag.insertEdge(va, vb, 1);
+        dag.insertEdge(va, vc, 1);
+        dag.insertEdge(vb, vd, 1);
+        dag.insertEdge(vc, vd, 1);
+        dag.insertEdge(vd, ve, 1);
+
+        // 调用 topologicalSort 方法
+        PositionalList<Vertex<String>> topoSort = topologicalSort(dag);
+
+        // 输出拓扑排序结果
+        System.out.println("Topological sort of the DAG:");
+        for (Vertex<String> v : topoSort) {
+            System.out.println(v.getElement());
         }
     }
 }
