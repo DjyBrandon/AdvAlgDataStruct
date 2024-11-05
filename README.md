@@ -3,17 +3,17 @@
 ## AADS Lab
 
 - ### [Lab 1: Map and Hashtables](src/main/java/LabMapHashtables)
-  - #### [LabMapHashtables / UnsortedTableMap](https://github.com/DjyBrandon/AdvAlgDataStruct/blob/master/src/main/java/LabMapHashtables/UnsortedTableMap.java)
-  - #### [LabMapHashtables / ChainHashMap](https://github.com/DjyBrandon/AdvAlgDataStruct/blob/master/src/main/java/LabMapHashtables/ChainHashMap.java)
-- ### [Lab 2: Sorted Map and Binary Search Trees](https://github.com/DjyBrandon/AdvAlgDataStruct/tree/master/src/main/java/LabSortedMapBST)
-  - #### [LabSortedMapBST / SortedTableMap](https://github.com/DjyBrandon/AdvAlgDataStruct/blob/master/src/main/java/LabSortedMapBST/SortedTableMap.java)
-  - #### [LabSortedMapBST / SplayTreeMap](https://github.com/DjyBrandon/AdvAlgDataStruct/blob/master/src/main/java/LabSortedMapBST/SplayTreeMap.java)
-- ### [Lab 3: AVL Trees](https://github.com/DjyBrandon/AdvAlgDataStruct/tree/master/src/main/java/LabAVLTrees)
-  - #### [LabAVLTrees / AVLTreeMap](https://github.com/DjyBrandon/AdvAlgDataStruct/blob/master/src/main/java/LabAVLTrees/AVLTreeMap.java)
-- ### [Lab 4: Graph Algorithms ADT](https://github.com/DjyBrandon/AdvAlgDataStruct/tree/master/src/main/java/LabGraph)
-  - #### [LabGraph / AdjacencyMapGraph](https://github.com/DjyBrandon/AdvAlgDataStruct/blob/master/src/main/java/LabGraph/AdjacencyMapGraph.java)
-  - #### [LabGraph / GraphAlgorithms - BFS / DFS / SPL / SPT / MST / transitiveClosure / topologicalSort](https://github.com/DjyBrandon/AdvAlgDataStruct/blob/master/src/main/java/LabGraph/GraphAlgorithms.java)
-  - #### [LabGraph / GraphExamples](https://github.com/DjyBrandon/AdvAlgDataStruct/blob/master/src/main/java/LabGraph/GraphExamples.java)
+  - #### [LabMapHashtables / UnsortedTableMap](src/main/java/LabMapHashtables/UnsortedTableMap.java)
+  - #### [LabMapHashtables / ChainHashMap](/src/main/java/LabMapHashtables/ChainHashMap.java)
+- ### [Lab 2: Sorted Map and Binary Search Trees](src/main/java/LabSortedMapBST)
+  - #### [LabSortedMapBST / SortedTableMap](src/main/java/LabSortedMapBST/SortedTableMap.java)
+  - #### [LabSortedMapBST / SplayTreeMap](src/main/java/LabSortedMapBST/SplayTreeMap.java)
+- ### [Lab 3: AVL Trees](src/main/java/LabAVLTrees)
+  - #### [LabAVLTrees / AVLTreeMap](src/main/java/LabAVLTrees/AVLTreeMap.java)
+- ### [Lab 4: Graph Algorithms ADT](src/main/java/LabGraph)
+  - #### [LabGraph / AdjacencyMapGraph](src/main/java/LabGraph/AdjacencyMapGraph.java)
+  - #### [LabGraph / GraphAlgorithms - BFS / DFS / SPL / SPT / MST / transitiveClosure / topologicalSort](src/main/java/LabGraph/GraphAlgorithms.java)
+  - #### [LabGraph / GraphExamples](src/main/java/LabGraph/GraphExamples.java)
 
 ## AADS Project
 
