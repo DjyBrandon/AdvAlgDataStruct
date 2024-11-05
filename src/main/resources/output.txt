@@ -1,0 +1,7 @@
+VehicleName,JobId,JourneyTime,ArrivalTime,WaitTime,DelayTime,ServiceTime,DepartureTime,Break1Time,Break1Duration,Break2Time,Break2Duration,Distance,SequenceNo
+1,Vehicle 1 start,0h0m,08:00,0h0m,0h0m,0h0m,8h0m,,,,,0,1
+1,C-0,0h0m,08:00,0h0m,0h0m,0h0m,8h0m,,,,,0,2
+1,C-1,4h0m,12:00,0h0m,0h0m,0h0m,12h0m,,,,,14400,3
+1,D-0,0h0m,12:00,0h0m,0h0m,2h0m,14h0m,14:00,0h15m,14:45,0h30m,0,4
+1,D-1,2h0m,16:45,0h0m,0h0m,0h0m,16h45m,,,,,7200,5
+1,Vehicle 1 end,0h30m,17:15,0h0m,0h0m,0h0m,17h15m,,,,,180000,6
