@@ -15,6 +15,10 @@
   - #### [LabGraph / GraphAlgorithms - BFS / DFS / SPL / SPT / MST / transitiveClosure / topologicalSort](src/main/java/LabGraph/GraphAlgorithms.java)
   - #### [LabGraph / GraphExamples](src/main/java/LabGraph/GraphExamples.java)
 
+## AADS Coursework
+
+- ### [Coursework 1: AVL Trees](src/main/java/AVL.java)
+
 ## AADS Project
 
 Project Introduction
